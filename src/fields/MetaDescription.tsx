@@ -98,7 +98,7 @@ export const MetaDescription: React.FC<
             rel="noopener noreferrer"
             target="_blank"
           >
-            best practices
+            рекомендації
           </a>
         </div>
       </div>
