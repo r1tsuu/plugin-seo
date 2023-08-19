@@ -4,3 +4,11 @@ demo/uploads
 build
 .DS_Store
 package-lock.json
+src
+demo
+.editorconfig
+.eslintrc.ks
+.prettierrc.js
+README.md
+tsconfig.json
+yarn.lock
