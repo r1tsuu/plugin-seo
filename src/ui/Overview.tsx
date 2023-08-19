@@ -53,7 +53,7 @@ export const Overview: React.FC = () => {
         marginBottom: '20px',
       }}
     >
-      <div>{`${numberOfPasses}/${testResults.length} checks are passing`}</div>
+      <div>{`${numberOfPasses}/${testResults.length} перевірок пройшли успішно`}</div>
     </div>
   )
 }

@@ -82,7 +82,7 @@ export const MetaDescription: React.FC<
                   color: 'currentcolor',
                 }}
               >
-                Auto-generate
+                Авто-генерація
               </button>
             </>
           )}
@@ -92,7 +92,7 @@ export const MetaDescription: React.FC<
             color: '#9A9A9A',
           }}
         >
-          {`This should be between ${minLength} and ${maxLength} characters. For help in writing quality meta descriptions, see `}
+          {`Повинно бути від ${minLength} до ${maxLength} символів. Для отримання допомоги з написанням якісних мета-описів дивіться `}
           <a
             href="https://developers.google.com/search/docs/advanced/appearance/snippet#meta-descriptions"
             rel="noopener noreferrer"

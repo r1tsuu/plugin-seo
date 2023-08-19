@@ -16,7 +16,7 @@ type UploadFieldWithProps = UploadFieldType & {
 }
 
 export const MetaImage: React.FC<UploadFieldWithProps | {}> = props => {
-  const { label, relationTo, fieldTypes, name, pluginConfig } =
+  const { label, relationTo, fieldTypes, name, pluginConfig, admin } =
     (props as UploadFieldWithProps) || {} // TODO: this typing is temporary until payload types are updated for custom field props
 
   const field: FieldType<string> = useField(props as Options)
@@ -106,6 +106,7 @@ export const MetaImage: React.FC<UploadFieldWithProps | {}> = props => {
           fieldTypes={fieldTypes}
           name={name}
           relationTo={relationTo}
+          description={admin?.description}
           value={value}
           onChange={incomingImage => {
             if (incomingImage !== null) {
@@ -136,7 +137,7 @@ export const MetaImage: React.FC<UploadFieldWithProps | {}> = props => {
         <Pill
           backgroundColor={hasImage ? 'green' : 'red'}
           color="white"
-          label={hasImage ? 'Good' : 'No Image'}
+          label={hasImage ? 'Добре' : 'Зображення відсутнє'}
         />
       </div>
     </div>

@@ -31,6 +31,7 @@ const seo =
             name: 'title',
             type: 'text',
             localized: true,
+            label: 'Заголовок',
             admin: {
               components: {
                 Field: props => getMetaTitleField({ ...props, pluginConfig }),
@@ -41,6 +42,7 @@ const seo =
             name: 'description',
             type: 'textarea',
             localized: true,
+            label: 'Опис',
             admin: {
               components: {
                 Field: props => getMetaDescriptionField({ ...props, pluginConfig }),
@@ -52,13 +54,13 @@ const seo =
                 // eslint-disable-next-line @typescript-eslint/consistent-type-assertions
                 {
                   name: 'image',
-                  label: 'Meta Image',
+                  label: 'Мета-зображення',
                   type: 'upload',
                   localized: true,
                   relationTo: pluginConfig?.uploadsCollection,
                   admin: {
                     description:
-                      'Maximum upload file size: 12MB. Recommended file size for images is <500KB.',
+                      'Максимальний розмір файлу для завантаження: 12 МБ. Рекомендований розмір файлу для зображень - менше 500 КБ',
                     components: {
                       Field: props => getMetaImageField({ ...props, pluginConfig }),
                     },

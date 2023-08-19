@@ -13,16 +13,18 @@ type PreviewFieldWithProps = Field & {
 
 export const Preview: React.FC<PreviewFieldWithProps | {}> = props => {
   const {
-    pluginConfig: { generateURL },
+    pluginConfig: { generateURL, uploadsCollection },
   } = (props as PreviewFieldWithProps) || {} // TODO: this typing is temporary until payload types are updated for custom field props;
 
   const locale = useLocale()
   const [fields] = useAllFormFields()
   const docInfo = useDocumentInfo()
+  const [metaImage, setMetaImage] = useState<null | string>(null)
 
   const {
     'meta.title': { value: metaTitle } = {} as Field,
     'meta.description': { value: metaDescription } = {} as Field,
+    'meta.image': { value: metaImageId } = {} as Field,
   } = fields
 
   const [href, setHref] = useState<string>()
@@ -42,16 +44,29 @@ export const Preview: React.FC<PreviewFieldWithProps | {}> = props => {
     getHref()
   }, [generateURL, fields, href, locale, docInfo])
 
+  useEffect(() => {
+    const getMetaImage = async () => {
+      if (uploadsCollection && metaImageId) {
+        const response = await fetch(`/api/${uploadsCollection}/${metaImageId}`)
+        const metaImage = await response.json()
+        if (metaImage?.url) return setMetaImage(metaImage.url)
+      }
+      if (metaImage) setMetaImage(null)
+    }
+
+    getMetaImage()
+  }, [metaImageId, uploadsCollection])
+
   return (
     <div>
-      <div>Preview</div>
+      <div>Попередній перегляд</div>
       <div
         style={{
           marginBottom: '5px',
           color: '#9A9A9A',
         }}
       >
-        Exact result listings may vary based on content and search relevancy.
+        Точні результати можуть відрізнятися в залежності від вмісту та релевантності пошуку.
       </div>
       <div
         style={{
@@ -95,6 +110,11 @@ export const Preview: React.FC<PreviewFieldWithProps | {}> = props => {
         >
           {metaDescription as string}
         </p>
+        {metaImage && (
+          <div className="thumbnail thumbnail--size-medium">
+            <img src={metaImage} alt="meta-image" />
+          </div>
+        )}
       </div>
     </div>
   )

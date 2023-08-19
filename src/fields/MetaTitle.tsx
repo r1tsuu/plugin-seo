@@ -78,7 +78,7 @@ export const MetaTitle: React.FC<TextFieldWithProps | {}> = props => {
                   color: 'currentcolor',
                 }}
               >
-                Auto-generate
+                Авто-генерація
               </button>
             </>
           )}
@@ -88,13 +88,13 @@ export const MetaTitle: React.FC<TextFieldWithProps | {}> = props => {
             color: '#9A9A9A',
           }}
         >
-          {`This should be between ${minLength} and ${maxLength} characters. For help in writing quality meta titles, see `}
+          {`Повинно бути від ${minLength} до ${maxLength} символів. Для отримання допомоги з написанням якісних мета-заголовків дивіться `}
           <a
             href="https://developers.google.com/search/docs/advanced/appearance/title-link#page-titles"
             rel="noopener noreferrer"
             target="_blank"
           >
-            best practices
+            рекомандації
           </a>
           .
         </div>

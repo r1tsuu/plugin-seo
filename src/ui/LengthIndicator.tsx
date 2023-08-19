@@ -23,7 +23,7 @@ export const LengthIndicator: React.FC<{
     const textLength = text?.length || 0
 
     if (textLength === 0) {
-      setLabel('Missing')
+      setLabel('Відсутнє')
       setLabelStyle({
         backgroundColor: 'red',
         color: 'white',
@@ -36,13 +36,13 @@ export const LengthIndicator: React.FC<{
         const ratioUntilMin = textLength / minLength
 
         if (ratioUntilMin > 0.9) {
-          setLabel('Almost there')
+          setLabel('Майже готово')
           setLabelStyle({
             backgroundColor: 'orange',
             color: 'white',
           })
         } else {
-          setLabel('Too short')
+          setLabel('Занадто коротко')
           setLabelStyle({
             backgroundColor: 'orangered',
             color: 'white',
@@ -53,7 +53,7 @@ export const LengthIndicator: React.FC<{
       }
 
       if (progress >= 0 && progress <= 1) {
-        setLabel('Good')
+        setLabel('Добре')
         setLabelStyle({
           backgroundColor: 'green',
           color: 'white',
@@ -62,7 +62,7 @@ export const LengthIndicator: React.FC<{
       }
 
       if (progress > 1) {
-        setLabel('Too long')
+        setLabel('Занадто довго')
         setLabelStyle({
           backgroundColor: 'red',
           color: 'white',
@@ -95,14 +95,14 @@ export const LengthIndicator: React.FC<{
         }}
       >
         <small>
-          {`${text?.length || 0}/${minLength}-${maxLength} chars, `}
+          {`${text?.length || 0}/${minLength}-${maxLength} симв., `}
           {(textLength === 0 || charsUntilMin > 0) && (
-            <Fragment>{`${charsUntilMin} to go`}</Fragment>
+            <Fragment>{`${charsUntilMin} залишилось`}</Fragment>
           )}
           {charsUntilMin <= 0 && charsUntilMax >= 0 && (
-            <Fragment>{`${charsUntilMax} left over`}</Fragment>
+            <Fragment>{`${charsUntilMax} залишилось щє`}</Fragment>
           )}
-          {charsUntilMax < 0 && <Fragment>{`${charsUntilMax * -1} too many`}</Fragment>}
+          {charsUntilMax < 0 && <Fragment>{`${charsUntilMax * -1} символів зайві`}</Fragment>}
         </small>
       </div>
       <div
